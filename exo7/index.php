@@ -1,3 +1,8 @@
+<?php
+$var1;
+$var2=36;
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +19,8 @@
     <?php
     // On regarde si le tableau $_POST est vide
     if(empty($_POST)){
+
+        $var1 = 2;
        // s'il est vide on affiche le formulaire
         ?> 
     <form action="index.php" method="post" enctype="multipart/form-data">
@@ -49,32 +56,15 @@
         } else{   // si le tableau $_POST n'est pas vide on affiche les informations qu'il contient sous la forme $_POST[name_du_champ]
             echo 'Bonjour ' . $_POST['gender'] .' '. $_POST['firstname'] .' '. $_POST['lastname'] . '<br>';
 
-            // On va vérifier que l'extension du fichier chargé est bien autorisé
             // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
-            // echo $_FILES['file']['name']; --> donne le nom du fichier nom.extension
-            $extension_fichier = pathinfo($_FILES['file']['name'])['extension'];
-            $extension_autorisé = array('png', 'jpg', 'jpeg');
-
-            //on test grace à la fonction in_array(valeur, tableau dans lequel chercher)
-            if(in_array($extension_fichier, $extension_autorisé)){
                 ?>
-                <p> 'Le fichier est bien chargé,<br>               
-                Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br>
+                <p>Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br> 
+                <!-- ou j'aurais pu utiliser  pathinfo($_FILES['file']['name'], PATHINFO_FILENAME); -->
 
-                L'extension du fichier est : <?= $extension_fichier;?></p>
-
+                L'extension du fichier est : <?= pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);?></p>
+                <!-- ou j'aurais pu utiliser  pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION); -->
                 <?php
-            } else{ // si le fichier n'est pas valide
-                ?>
-                <p>Le type du fichier n'est pas valide </p>
-                <?php
-            }
         }
-
-// J'ai essayé d'utiliser les options de pathinfo mais pas réussi
-            /*echo 'Le nom de votre fichier est : ' . pathinfo($_FILES['file']['name'], 5). '<br>';
-
-            echo 'L\'extension de votre fichier est : ' . pathinfo($_FILES['file']['name'], 4);*/
     ?>
 </body>
 </html>

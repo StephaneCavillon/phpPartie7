@@ -52,11 +52,11 @@
             // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
             // echo $_FILES['file']['name']; --> donne le nom du fichier nom.extension
             $extension_fichier = pathinfo($_FILES['file']['name'])['extension'];
-            $extension_autorisé = 'pdf';
+            $extension_autorise = array('pdf');
             //on test grace à in_array
-            if(in_array($extension_fichier, $extension_autorisé)){
+            if(in_array($extension_fichier, $extension_autorise)){ // ou simplement if($extension_fichier == pdf)
                 ?>
-                <p> 'Le fichier est bien chargé,<br>               
+                <p> Le fichier est bien chargé,<br>               
                 Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br>
 
                 L'extension du fichier est : <?= $extension_fichier;?></p>
