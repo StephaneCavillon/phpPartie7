@@ -7,9 +7,8 @@
 </head>
 <body>
 
-    <h2>Exercice 7 </h2>
-    <p>Au formulaire de l'exercice 5, ajouter un champ d'envoi de fichier. Afficher en plus de ce qui est demandé à l'exercice 6, le nom et l'extension du fichier.</p>
-
+    <h2>Exercice 8 </h2>
+    <p>Sur le formulaire de l'exercice 6, en plus de ce qui est demandé sur les exercices précédent, vérifier que le fichier transmis est bien un fichier pdf.</p>
     
     <?php
     // On regarde si le tableau $_POST est vide
@@ -34,9 +33,9 @@
             <input type="text" name="firstname" id="firstname">
         </div>
         <div>
-            Votre image :
-            <!-- image/* permet d'aider à la selection des fichiers image -->
-            <input type="file" name="file" accept="image/.png, image/.jpg">
+            Votre document :
+            <!-- image/* permet d'aider à la selection des fichiers  -->
+            <input type="file" name="file" accept=".pdf">
         </div>
         <div>
             <input type="submit" value="Envoyer">
@@ -49,13 +48,12 @@
         } else{   // si le tableau $_POST n'est pas vide on affiche les informations qu'il contient sous la forme $_POST[name_du_champ]
             echo 'Bonjour ' . $_POST['gender'] .' '. $_POST['firstname'] .' '. $_POST['lastname'] . '<br>';
 
-            // On va vérifier que l'extension du fichier chargé est bien autorisé
+            //On va vérifier que l'extension du fichier chargé est bien autorisé
             // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
             // echo $_FILES['file']['name']; --> donne le nom du fichier nom.extension
             $extension_fichier = pathinfo($_FILES['file']['name'])['extension'];
-            $extension_autorisé = array('png', 'jpg', 'jpeg');
-
-            //on test grace à la fonction in_array(valeur, tableau dans lequel chercher)
+            $extension_autorisé = 'pdf';
+            //on test grace à in_array
             if(in_array($extension_fichier, $extension_autorisé)){
                 ?>
                 <p> 'Le fichier est bien chargé,<br>               
