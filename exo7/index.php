@@ -56,7 +56,6 @@ $var2=36;
     } else{   // si le tableau $_POST n'est pas vide on affiche les informations qu'il contient sous la forme $_POST[name_du_champ]
         echo 'Bonjour ' . $_POST['gender'] .' '. $_POST['firstname'] .' '. $_POST['lastname'] . '<br>';
 
-        var_dump($_FILES);
         // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
             ?>
         <p>Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br> 
