@@ -38,6 +38,7 @@
 
     <?php
         } else{
+            // stocker les données dans des variables peut permettre de les tester par des REGEX et ensuite on sera certain que la variable contient bien les données au format voulu
             echo 'Bonjour ' . $_POST['gender'] .' '. $_POST['firstname'] .' '. $_POST['lastname'];
         }
     ?>

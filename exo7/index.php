@@ -18,9 +18,9 @@ $var2=36;
     
     <?php
     // On regarde si le tableau $_POST est vide
-    if(empty($_POST)){
+        if(empty($_POST)){
 
-        $var1 = 2;
+        // $var1 = 2;
        // s'il est vide on affiche le formulaire
         ?> 
     <form action="index.php" method="post" enctype="multipart/form-data">
@@ -43,7 +43,7 @@ $var2=36;
         <div>
             Votre image :
             <!-- image/* permet d'aider à la selection des fichiers image -->
-            <input type="file" name="file" accept="image/.png, image/.jpg">
+            <input type="file" name="file" accept="image/.png, image/.jpg" required>
         </div>
         <div>
             <input type="submit" value="Envoyer">
@@ -53,18 +53,19 @@ $var2=36;
 
         <!-- L'input:files permet la création d'un tableau associatif $_FILES-->
     <?php
-        } else{   // si le tableau $_POST n'est pas vide on affiche les informations qu'il contient sous la forme $_POST[name_du_champ]
-            echo 'Bonjour ' . $_POST['gender'] .' '. $_POST['firstname'] .' '. $_POST['lastname'] . '<br>';
+    } else{   // si le tableau $_POST n'est pas vide on affiche les informations qu'il contient sous la forme $_POST[name_du_champ]
+        echo 'Bonjour ' . $_POST['gender'] .' '. $_POST['firstname'] .' '. $_POST['lastname'] . '<br>';
 
-            // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
-                ?>
-                <p>Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br> 
-                <!-- ou j'aurais pu utiliser  pathinfo($_FILES['file']['name'], PATHINFO_FILENAME); -->
+        var_dump($_FILES);
+        // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
+            ?>
+        <p>Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br> 
+        <!-- ou j'aurais pu utiliser  pathinfo($_FILES['file']['name'], PATHINFO_FILENAME); -->
 
-                L'extension du fichier est : <?= pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);?></p>
-                <!-- ou j'aurais pu utiliser  pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION); -->
-                <?php
-        }
+        L'extension du fichier est : <?= pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);?></p>
+        <!-- ou j'aurais pu utiliser  pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION); -->
+    <?php
+    }
     ?>
 </body>
 </html>

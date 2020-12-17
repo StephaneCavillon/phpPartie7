@@ -17,8 +17,8 @@
 
     Ce formulaire doit rediriger vers la page index.php. 
     Vous avez le choix de la méthode.</p>
-    
-    <form action="index.php" method="post">
+    <!-- en ne mettant rien dans l'attribut action il envoie automatiquement sur la même page -->
+    <form action="" method="post">
         <div>
             <label for="gender">Civilité :</label>
             <select name="gender" id="gender" >
@@ -36,9 +36,16 @@
             <input type="text" name="firstname" id="firstname">
         </div>
         <div>
-            <input type="submit" value="Envoyer">
+            <input type="submit" name="button" value="Envoyer">
         </div>
     </form>
+
+    <?php
+        if(isset($_POST['button'])){
+            echo 'le bouton à été cliqué';
+        }
+
+    ?>
     
 </body>
 </html>

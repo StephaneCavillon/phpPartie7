@@ -35,7 +35,7 @@
         <div>
             Votre document :
             <!-- image/* permet d'aider à la selection des fichiers  -->
-            <input type="file" name="file" accept=".pdf">
+            <input type="file" name="file" accept=".pdf" required>
         </div>
         <div>
             <input type="submit" value="Envoyer">
@@ -51,13 +51,13 @@
             //On va vérifier que l'extension du fichier chargé est bien autorisé
             // on va utiliser les infos combiné de la fonction pathinfo() et du tableau $_FILES
             // echo $_FILES['file']['name']; --> donne le nom du fichier nom.extension
-            $extension_fichier = pathinfo($_FILES['file']['name'])['extension'];
-            $extension_autorise = array('pdf');
+            $extension_fichier = pathinfo($_FILES['file']['name'])['extension']; // ou pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+            $extension_autorisee = array('pdf');
             //on test grace à in_array
-            if(in_array($extension_fichier, $extension_autorise)){ // ou simplement if($extension_fichier == pdf)
+            if(in_array($extension_fichier, $extension_autorisee)){ // ou simplement if($extension_fichier == pdf)
                 ?>
                 <p> Le fichier est bien chargé,<br>               
-                Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br>
+                Le nom du fichier est : <?= pathinfo($_FILES['file']['name'])['filename'];?> <br> <!-- pathinfo($_FILES['file']['name'],PATHINFO_FILENAME);-->
 
                 L'extension du fichier est : <?= $extension_fichier;?></p>
 
