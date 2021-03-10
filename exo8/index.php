@@ -68,11 +68,6 @@
                 <?php
             }
         }
-
-// J'ai essayé d'utiliser les options de pathinfo mais pas réussi
-            /*echo 'Le nom de votre fichier est : ' . pathinfo($_FILES['file']['name'], 5). '<br>';
-
-            echo 'L\'extension de votre fichier est : ' . pathinfo($_FILES['file']['name'], 4);*/
     ?>
 </body>
 </html>
